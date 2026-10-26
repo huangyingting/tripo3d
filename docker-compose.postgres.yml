@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tripo3d
+      POSTGRES_PASSWORD: tripo3d_prod_password
+      POSTGRES_DB: tripo3d
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_PROVIDER: postgresql
+      DATABASE_URL: postgresql://tripo3d:tripo3d_prod_password@postgres:5432/tripo3d?schema=public
+      NEXTAUTH_SECRET: replace-with-production-random-secret
+      NEXTAUTH_URL: http://localhost:3000
+
+volumes:
+  pgdata:

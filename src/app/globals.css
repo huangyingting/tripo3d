@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #070709;
+  color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom sleek dark scrollbars matching Tripo Studio */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0e12;
+}
+::-webkit-scrollbar-thumb {
+  background: #262936;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b4054;
+}
+
+.checkerboard-bg {
+  background-color: #13151c;
+  background-image:
+    linear-gradient(45deg, #1b1e28 25%, transparent 25%),
+    linear-gradient(-45deg, #1b1e28 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1b1e28 75%),
+    linear-gradient(-45deg, transparent 75%, #1b1e28 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
